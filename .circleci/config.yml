@@ -17,7 +17,7 @@ jobs:
           name: "Install dependencies"
       - 
         run: 
-          command: "ansible-playbook -i inventory.txt main4.yml\n"
+          command: "ansible-playbook -i inventory.txt main.yml\n"
           name: "Configure server"
   create_infrastructure: 
     docker: 
