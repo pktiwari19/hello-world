@@ -50,7 +50,7 @@ jobs:
           name: "test job"
           command: return 1
       - destroy_environment
-        when: on_fail
+          when: on_fail
 workflows: 
   IAC_workflow: 
     jobs: 
