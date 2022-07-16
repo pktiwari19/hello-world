@@ -18,27 +18,22 @@ jobs:
         image: "python:3.7-alpine3.11"
     steps: 
       - checkout
-      - 
-        add_ssh_keys: 
+      - add_ssh_keys: 
           fingerprints: 
             - "ae:5c:20:a5:fe:41:9b:a9:49:d3:cd:66:c3:d8:8c:57"
-      - 
-        run: 
+      - run: 
           command: "# install the dependencies needed for your playbook\n\
               apk add --update ansible \n"
           name: "Install dependencies"
-      - 
-        run: 
+      - run: 
           command: "ansible-playbook -i inventory.txt main.yml\n"
           name: "Configure server"
   create_infrastructure: 
     docker: 
-      - 
-        image: amazon/aws-cli
+      - image: amazon/aws-cli
     steps: 
       - checkout
-      - 
-        run: 
+      - run: 
           command: "aws cloudformation deploy --template-file template.yml --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} --region us-east-1\n"
           name: "Create Cloudformation Stack"
 
