@@ -35,7 +35,6 @@ jobs:
       - run: 
           command: "aws cloudformation deploy --template-file template.yml --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} --region us-east-1\n"
           name: "Create Cloudformation Stack"
-
   smoke_test:
     docker:
       - image: amazon/aws-cli
@@ -45,7 +44,7 @@ jobs:
           command: return 1
       - destroy_environment
       
-   create_and_deploy_front_end:
+  create_and_deploy_front_end:
     docker:
       - image: amazon/aws-cli
     steps:
